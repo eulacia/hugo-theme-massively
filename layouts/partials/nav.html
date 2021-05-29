@@ -2,14 +2,14 @@
 {{ $data := index .Site.Data .Site.Language.Lang }}
 <nav id="nav">
     <ul class="links">
-        <li class="active"><a href='{{ "/" | relLangURL }}'>{{ .Site.Title }}</a></li>
+        <li {{if (.IsHome)}} class="active"{{end}}><a href='{{ "/" | relLangURL }}'>all</a></li>
+        {{ range $taxonomyname, $taxonomy := .Site.Taxonomies.tags }}
+            {{ $currentTagUrl := $taxonomyname | printf "%s%s" "/tags/" | printf "%s/" }}
+                <li {{if eq $.URL $currentTagUrl}}class="active"{{end}}><a href="{{ "/tags/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
+            {{ else }}
+        {{ end }}
         {{ with $data.contactinfo }}
         <li><a href='{{ "#footer" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
-        {{ end }}
-        {{ if .IsTranslated }}
-        {{ range .AllTranslations }}
-        <li {{if eq ($.Site.Language) (.Language)}}class="active"{{end}}><a href='{{ .Permalink }}'>{{ .Language.LanguageName }}</a></li>
-        {{ end }}
         {{ end }}
     </ul>
     {{ with $data.social }}

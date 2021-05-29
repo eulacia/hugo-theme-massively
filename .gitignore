@@ -1,3 +1,11 @@
 node_modules
 exampleSite/public
 .publish
+assets/.DS_Store
+assets/scss/.DS_Store
+exampleSite/.DS_Store
+exampleSite/data/.DS_Store
+layouts/partials/.DS_Store
+static/.DS_Store
+static/assets/.DS_Store
+.DS_Store
