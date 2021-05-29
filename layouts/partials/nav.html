@@ -8,9 +8,6 @@
                 <li {{if eq $.RelPermalink $currentTagUrl}}class="active"{{end}}><a href="{{ "/tags/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
             {{ else }}
         {{ end }}
-        {{ with $data.contactinfo }}
-        <li><a href='{{ "#footer" | relLangURL }}'>{{ i18n "NAV_CONTACT" . }}</a></li>
-        {{ end }}
     </ul>
     {{ with $data.social }}
     <ul class="icons">
