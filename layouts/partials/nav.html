@@ -5,7 +5,7 @@
         <li {{if (.IsHome)}} class="active"{{end}}><a href='{{ "/" | relLangURL }}'>all</a></li>
         {{ range $taxonomyname, $taxonomy := .Site.Taxonomies.tags }}
             {{ $currentTagUrl := $taxonomyname | printf "%s%s" "/tags/" | printf "%s/" }}
-                <li {{if eq $.URL $currentTagUrl}}class="active"{{end}}><a href="{{ "/tags/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
+                <li {{if eq $.RelPermalink $currentTagUrl}}class="active"{{end}}><a href="{{ "/tags/" | relLangURL}}{{ $taxonomyname | urlize }}">{{ $taxonomyname }}</a></li>
             {{ else }}
         {{ end }}
         {{ with $data.contactinfo }}
